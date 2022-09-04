@@ -11,6 +11,7 @@ directions = InlineKeyboardMarkup(row_width=1).add(direction_1, direction_2, dir
 #Физмат
 geometry = InlineKeyboardButton("Геометрия", callback_data='geometry')
 algebra = InlineKeyboardButton("Алгебра", callback_data='algebra')
+matan = InlineKeyboardButton("Мат Анализ", callback_data='matan')
 it_1 = InlineKeyboardButton("Информатика ч.1", callback_data="it_1")
 it_2 = InlineKeyboardButton("Информатика ч.2", callback_data='it_2')
 physics = InlineKeyboardButton("Физика", callback_data='physics')
@@ -22,11 +23,12 @@ english_sb = InlineKeyboardButton("Английский язык (учебник
 english_wb = InlineKeyboardButton("Английский язык (тетрадь)", callback_data='english_wb')
 english_mc = InlineKeyboardButton("Английский язык (Macmillan)", callback_data='english_mc')
 
-subjects_phys = InlineKeyboardMarkup(row_width=1).add(algebra, english_sb, english_wb, english_mc, geometry, it_1, it_2, russian_history_1, russian_history_2, russian_history_3, russian_phys, physics)
+subjects_phys = InlineKeyboardMarkup(row_width=1).add(algebra, english_sb, english_wb, english_mc, geometry, it_1, it_2, russian_history_1, russian_history_2, russian_history_3, russian_phys, physics, matan)
 
 
 button_gdz_geometry = InlineKeyboardButton("Списать", url="https://gdz.ru/class-10/geometria/atanasyan-10-11/")
 button_gdz_algebra = InlineKeyboardButton("Списать", url="https://gdz.ru/class-11/algebra/kolmogorov/")
+button_gdz_matan = InlineKeyboardButton("Списать", url="https://youtube.com/shorts/1brRuAovbSo?feature=share")
 button_gdz_it_1 = InlineKeyboardButton("Списать", url="https://gdz.ru/class-10/informatika/reshebnik-polyakov-k-yu-eremin/40-item/")
 button_gdz_it_2 = InlineKeyboardButton("Списать", url="https://gdz.ru/class-10/informatika/reshebnik-polyakov-k-yu-eremin/40-item/")
 button_gdz_russian_phys = InlineKeyboardButton("Списать", url="https://gdz.ru/class-10/russkii_yazik/grekov-10-11/")
@@ -38,6 +40,7 @@ button_gdz_english_wb = InlineKeyboardButton("Списать", url="http://onlin
 
 keyboard_gdz_geometry = InlineKeyboardMarkup().add(button_gdz_geometry)
 keyboard_gdz_algebra = InlineKeyboardMarkup().add(button_gdz_algebra)
+keyboard_gdz_matan = InlineKeyboardMarkup().add(button_gdz_matan)
 keyboard_gdz_it_2 = InlineKeyboardMarkup().add(button_gdz_it_1)
 keyboard_gdz_it_1 = InlineKeyboardMarkup().add(button_gdz_it_2)
 keyboard_gdz_russian_phys = InlineKeyboardMarkup().add(button_gdz_russian_phys)

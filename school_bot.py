@@ -1,15 +1,17 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-from config import TOKEN
+
 from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.types import InputFile
 
+import config as cg
 import keyboards as kb
 
-bot = Bot(token=TOKEN)
+
+bot = Bot(token=cg.TOKEN)
 dp = Dispatcher(bot)
 
 
@@ -29,11 +31,13 @@ async def process_help_command(message: types.Message):
                         "/change - смена направления и учебников")
 
 
+#Направления
+
+
 @dp.message_handler(commands=['change'])
 async def process_start_command(message: types.Message):
     await message.reply("Выберите своё направление:", reply_markup=kb.directions)
 
-#Направления
 
 @dp.callback_query_handler(lambda c: c.data == 'direction1')
 async def process_callback_button1(callback_query: types.CallbackQuery):
@@ -83,16 +87,22 @@ async def process_callback_button1(callback_query: types.CallbackQuery):
     await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAPoYmWS3boIuJnE3sLU90q9TjQ1NlsAAnkXAAJH9jBLNPV6_9rlzlAkBA", reply_markup=kb.keyboard_gdz_algebra)
 
 
+@dp.callback_query_handler(lambda c: c.data == 'matan')
+async def process_callback_button1(callback_query: types.CallbackQuery):
+    await bot.answer_callback_query(callback_query.id)
+    await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAIGDmMQxQc4ZcGwOp0x8KRY2seHunRGAALeIQACZn2JSKvbwhwPTXIBKQQ", reply_markup=kb.keyboard_gdz_matan)
+
+
 @dp.callback_query_handler(lambda c: c.data == 'it_1')
 async def process_callback_button1(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
-    await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAPzYmW8VqcSvI-yIfNGJl8MV-mh7poAAlMYAAJH9jBLe2ojdEARc-YkBA", reply_markup=kb.keyboard_gdz_it_1)
+    await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAIGCGMQqPNFWX1zpsIX1H5LIkVADODkAAJLIQACZn2JSI_G0VD-KuuKKQQ", reply_markup=kb.keyboard_gdz_it_1)
 
 
 @dp.callback_query_handler(lambda c: c.data == 'it_2')
 async def process_callback_button1(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
-    await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAPzYmW8VqcSvI-yIfNGJl8MV-mh7poAAlMYAAJH9jBLe2ojdEARc-YkBA", reply_markup=kb.keyboard_gdz_it_2)
+    await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAIGC2MQqVg3fEdhOvFlsXbJJL5cmo8OAAJRIQACZn2JSEY2p816aC__KQQ", reply_markup=kb.keyboard_gdz_it_2)
 
 
 @dp.callback_query_handler(lambda c: c.data == 'rus_phys')
@@ -180,8 +190,6 @@ async def process_callback_button1(callback_query: types.CallbackQuery):
 async def process_callback_button1(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
     await bot.send_document(callback_query.from_user.id, document="BQACAgIAAxkBAAICwmJu9KYWjLxUqUEFWE8hvQ4fsZZjAAJtGwACvNx5S-Hu9qGgh9FSJAQ", reply_markup=kb.keyboard_gdz_social)
-
-
 
 
 @dp.message_handler(content_types=["document"])

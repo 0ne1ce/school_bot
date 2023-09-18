@@ -1,1 +1,1 @@
-TOKEN = "abobs"
+TOKEN = "aboba"
